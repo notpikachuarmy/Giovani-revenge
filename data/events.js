@@ -25,7 +25,7 @@ GC.DATA.speakers = {
 };
 
 GC.DATA.events = [
-  { id: 'tienda', context: 'shop', title: 'La tienda de material',
+  { id: 'tienda', scene: 'shop', context: 'shop', title: 'La tienda de material',
     lines: [
       { who: 'narr', text: 'Una tienda de material deportivo de lujo. Giovanni la compró ayer para no tener que hacer cola.' },
       { who: 'giovanni', text: '¿Cuánto cuesta todo esto?' },
@@ -36,7 +36,7 @@ GC.DATA.events = [
       { who: 'narr', text: 'Comer y dormir no cuestan nada. El dinero es para equipo, entrenamientos especiales y caprichos absurdos.' },
     ] },
 
-  { id: 'primer_video', context: 'hub', title: 'Análisis de vídeo', when: { minFights: 1 },
+  { id: 'primer_video', scene: 'office', context: 'hub', title: 'Análisis de vídeo', when: { minFights: 1 },
     lines: [
       { who: 'narr', text: 'Giovanni revisa la grabación de su combate. En bucle. A cámara lenta.' },
       { who: 'giovanni', text: 'Ahí. ¿Lo ves? En el segundo tres bajé la guardia.' },
@@ -46,7 +46,7 @@ GC.DATA.events = [
     ],
     rewards: { sp: 1, intel: true } },
 
-  { id: 'maestro', context: 'hub', title: 'Un viejo maestro', when: { minDay: 3 },
+  { id: 'maestro', scene: 'gym', context: 'hub', title: 'Un viejo maestro', when: { minDay: 3 },
     lines: [
       { who: 'narr', text: 'Un anciano con una toalla al cuello aparece en la puerta del gimnasio.' },
       { who: 'coach', text: 'Me han dicho que buscas entrenador. Cobro mucho.' },
@@ -64,7 +64,7 @@ GC.DATA.events = [
         rewards: { stats: { end: 2, spd: 1 }, sp: 1 } },
     ] },
 
-  { id: 'rocket_guantes', context: 'hub', title: 'Entrega especial', when: { minFights: 2 },
+  { id: 'rocket_guantes', scene: 'office', context: 'hub', title: 'Entrega especial', when: { minFights: 2 },
     lines: [
       { who: 'agente', text: '¡Señor! El departamento de I+D le envía esto.' },
       { who: 'narr', text: 'Una caja negra. Dentro, unos guantes con una enorme R bordada.' },
@@ -74,7 +74,7 @@ GC.DATA.events = [
     ],
     rewards: { item: 'guantes_rocket' } },
 
-  { id: 'intimidar', context: 'hub', title: 'Guerra psicológica', when: { minFights: 3 }, hours: 3,
+  { id: 'intimidar', scene: 'office', cast: ['giovanni'], context: 'hub', title: 'Guerra psicológica', when: { minFights: 3 }, hours: 3,
     lines: [
       { who: 'narr', text: 'Giovanni coloca una foto de Chansey frente a su escritorio. Planea intimidarla con la mirada.' },
       { who: 'giovanni', text: 'Mírame bien. Soy tu peor pesadilla.' },
@@ -84,7 +84,7 @@ GC.DATA.events = [
     ],
     rewards: { stats: { men: 3 }, sp: 1 } },
 
-  { id: 'cientifico', context: 'hub', title: 'El Proyecto Huevo', when: { minFights: 4 },
+  { id: 'cientifico', scene: 'lab', context: 'hub', title: 'El Proyecto Huevo', when: { minFights: 4 },
     lines: [
       { who: 'giovanni', text: 'Quiero saberlo todo sobre ella. Su biología. Sus debilidades. Su horario.' },
       { who: 'cientifico', text: 'Hemos realizado cuatrocientas doce pruebas, señor.' },
@@ -95,7 +95,7 @@ GC.DATA.events = [
     ],
     rewards: { flag: ['gravityRoom', 'chanseyBalloon'], intel: true, unlockText: 'Nuevos entrenamientos: Cámara de gravedad y Simulador de Chansey' } },
 
-  { id: 'persian', context: 'hub', title: 'Un espectador exigente', when: { minDay: 6 },
+  { id: 'persian', scene: 'gym', context: 'hub', title: 'Un espectador exigente', when: { minDay: 6 },
     lines: [
       { who: 'narr', text: 'Persian observa a Giovanni hacer flexiones. Bosteza.' },
       { who: 'giovanni', text: '¿Tú también dudas de mí?' },
@@ -104,7 +104,7 @@ GC.DATA.events = [
     ],
     rewards: { stats: { men: 2, end: 1 } } },
 
-  { id: 'chandal', context: 'hub', title: 'Votación interna', when: { minFights: 5 },
+  { id: 'chandal', scene: 'office', context: 'hub', title: 'Votación interna', when: { minFights: 5 },
     lines: [
       { who: 'agente', text: 'Señor, la organización ha votado por unanimidad regalarle esto.' },
       { who: 'narr', text: 'Un chándal negro con una R dorada. Talla «Jefe».' },
@@ -113,7 +113,7 @@ GC.DATA.events = [
     ],
     rewards: { item: 'chandal_rocket' } },
 
-  { id: 'periodico', context: 'hub', title: 'Prensa', when: { minFights: 6 },
+  { id: 'periodico', scene: 'office', context: 'hub', title: 'Prensa', when: { minFights: 6 },
     lines: [
       { who: 'narr', text: 'Titular del día: «MAGNATE MISTERIOSO PIERDE OTRA VEZ CONTRA POKÉMON ENFERMERA».' },
       { who: 'giovanni', text: '¿Quién ha filtrado esto?' },
@@ -122,25 +122,25 @@ GC.DATA.events = [
     ],
     rewards: { sp: 1, xp: 40 } },
 
-  { id: 'sigue_chansey', context: 'hub', title: 'Una revelación', when: { minDay: 10 },
+  { id: 'sigue_chansey', scene: 'gym', cast: ['giovanni'], context: 'hub', title: 'Una revelación', when: { minDay: 10 },
     lines: [
       { who: 'narr', text: 'Han pasado {day} días.' },
       { who: 'narr', text: 'Giovanni ha levantado {tons} toneladas, recorrido {km} km y lanzado {punches} puñetazos.' },
-      { who: 'narr', text: 'Mientras tanto, en el pabellón…' },
+      { who: 'narr', text: 'Mientras tanto, en el pabellón…', scene: 'ring', cast: ['chansey'] },
       { who: 'narr', text: 'Chansey sigue siendo Chansey.' },
-      { who: 'giovanni', text: 'Lo noto. Desde aquí. Noto que sigue siendo Chansey.' },
+      { who: 'giovanni', text: 'Lo noto. Desde aquí. Noto que sigue siendo Chansey.', scene: 'gym', cast: ['giovanni'] },
     ],
     rewards: { stats: { men: 2 } } },
 
-  { id: 'pesadilla', context: 'sleep', title: 'Pesadilla', when: { minFights: 2, chance: 0.35 },
+  { id: 'pesadilla', scene: 'night', cast: ['giovanni', 'chansey'], context: 'sleep', title: 'Pesadilla', when: { minFights: 2, chance: 0.35 },
     lines: [
       { who: 'narr', text: 'Giovanni sueña que es un huevo. Un huevo en el bolsillo de una Chansey gigante.' },
       { who: 'giovanni', text: '¡NO!' },
-      { who: 'narr', text: 'Se despierta empapado en sudor. Y extrañamente motivado.' },
+      { who: 'narr', text: 'Se despierta empapado en sudor. Y extrañamente motivado.', scene: 'gym', cast: ['giovanni'] },
     ],
     rewards: { stats: { men: 1 }, sp: 1 } },
 
-  { id: 'puno_aprendido', context: 'hub', title: 'El golpe definitivo', when: { skill: { puno: 1 } },
+  { id: 'puno_aprendido', scene: 'gym', context: 'hub', title: 'El golpe definitivo', when: { skill: { puno: 1 } },
     lines: [
       { who: 'giovanni', text: '¡Finalmente!' },
       { who: 'giovanni', text: '¡El golpe definitivo! ¡El Puño de la Organización!' },
@@ -148,7 +148,7 @@ GC.DATA.events = [
       { who: 'narr', text: 'Giovanni está listo. Esta vez sí.' },
     ] },
 
-  { id: 'final_unlock', context: 'hub', title: 'Ha llegado la hora', when: { final: true },
+  { id: 'final_unlock', scene: 'office', context: 'hub', title: 'Ha llegado la hora', when: { final: true },
     lines: [
       { who: 'narr', text: 'Han pasado {day} días.' },
       { who: 'narr', text: 'Giovanni ha lanzado {punches} puñetazos y levantado {tons} toneladas.' },

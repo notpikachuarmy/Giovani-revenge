@@ -38,7 +38,77 @@
 /* ------------------------------------------------------------ escenas */
 .event-screen { min-height: 86vh; display: flex; flex-direction: column; justify-content: flex-end; gap: 16px; }
 .event-title { font-size: 14px; color: var(--muted); }
-.event-stage { flex: 1; }
+.event-stage {
+  position: relative; flex: 1; min-height: 300px; overflow: hidden;
+  border: 3px solid var(--ink); box-shadow: var(--shadow);
+  background-size: cover; background-position: center;
+}
+.stage-deco { position: absolute; inset: 0; pointer-events: none; }
+.stage-cast {
+  position: absolute; left: 0; right: 0; bottom: 30px;
+  display: flex; justify-content: center; align-items: flex-end; gap: clamp(16px, 6vw, 90px);
+}
+.actor { width: 150px; height: 170px; transition: filter 0.2s, opacity 0.2s, transform 0.3s; transform-origin: bottom center; }
+.actor-giovanni { width: 110px; height: 190px; }
+.actor-chansey { width: 170px; height: 170px; }
+.actor.quiet { filter: brightness(0.55) saturate(0.7); }
+.actor.talking { transform: translateY(-6px); animation: talk 0.6s ease-in-out infinite; }
+.actor.fx-ko { transform: translate(95px, -45px) rotate(-90deg); animation: none; filter: brightness(0.85); }
+.actor.fx-wobble { animation: wobble 0.6s ease-in-out infinite; }
+@keyframes talk { 50% { transform: translateY(-10px); } }
+@keyframes wobble { 25% { transform: rotate(-6deg); } 75% { transform: rotate(6deg); } }
+
+/* --- Decorados (se sustituyen por imagen si se define GC.SCENES) --- */
+.event-stage.has-bg .stage-deco { display: none; }
+.scene-ring { background-color: #1a1640; background-image: radial-gradient(ellipse at 50% 0%, #4a3f9a 0%, #1a1640 60%); }
+.scene-ring .stage-deco {
+  background:
+    linear-gradient(var(--rocket), var(--rocket)) 0 calc(100% - 140px) / 100% 5px no-repeat,
+    linear-gradient(var(--rocket), var(--rocket)) 0 calc(100% - 105px) / 100% 5px no-repeat,
+    linear-gradient(var(--rocket), var(--rocket)) 0 calc(100% - 70px) / 100% 5px no-repeat,
+    linear-gradient(#e7e2f1, #bdb6d6) 0 100% / 100% 38px no-repeat,
+    conic-gradient(from 165deg at 30% -10%, transparent 0 8deg, rgba(255, 245, 200, 0.14) 8deg 18deg, transparent 18deg),
+    conic-gradient(from 177deg at 70% -10%, transparent 0 8deg, rgba(255, 245, 200, 0.14) 8deg 18deg, transparent 18deg);
+}
+.scene-gym { background-color: #3a2f5e; }
+.scene-gym .stage-deco {
+  background:
+    linear-gradient(90deg, #8c2a2a, #b33d3d 50%, #8c2a2a) 85% 0 / 50px 170px no-repeat,
+    repeating-linear-gradient(90deg, #2c2148 0 40px, #251b3e 40px 80px) 0 100% / 100% 34px no-repeat,
+    linear-gradient(#3a2f5e 0 70%, #24193d 70%);
+}
+.scene-office { background-color: #2b1f1a; }
+.scene-office .stage-deco {
+  background:
+    linear-gradient(#5a3a22, #3d2716) 50% 100% / 80% 48px no-repeat,
+    linear-gradient(#0f1640, #0f1640) 12% 30px / 160px 110px no-repeat,
+    linear-gradient(var(--gold), var(--gold)) 88% 40px / 70px 90px no-repeat,
+    repeating-linear-gradient(90deg, #3b2a22 0 6px, #34251e 6px 60px);
+}
+.scene-shop { background-color: #2f3a5e; }
+.scene-shop .stage-deco {
+  background:
+    repeating-linear-gradient(90deg, transparent 0 18px, rgba(215, 38, 61, 0.7) 18px 34px) 0 60px / 100% 24px no-repeat,
+    repeating-linear-gradient(90deg, transparent 0 22px, rgba(71, 180, 255, 0.6) 22px 40px) 0 130px / 100% 24px no-repeat,
+    linear-gradient(#4a4560, #4a4560) 0 100% / 100% 30px no-repeat;
+}
+.scene-lab { background-color: #12333a; }
+.scene-lab .stage-deco {
+  background:
+    radial-gradient(circle, #57d36b 0 22px, transparent 23px) 15% 50px / 60px 60px no-repeat,
+    radial-gradient(circle, #47b4ff 0 18px, transparent 19px) 82% 70px / 60px 60px no-repeat,
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.04) 0 2px, transparent 2px 24px),
+    linear-gradient(#1d4a52, #1d4a52) 0 100% / 100% 30px no-repeat;
+}
+.scene-night { background-color: #0d0718; background-image: radial-gradient(circle at 50% 40%, #3b1240 0%, #0d0718 70%); }
+.scene-night .actor-chansey { width: 240px; height: 240px; }
+
+@media (max-width: 800px) {
+  .event-stage { min-height: 230px; }
+  .actor { width: 100px; height: 120px; }
+  .actor-giovanni { width: 80px; height: 140px; }
+  .actor-chansey { width: 120px; height: 120px; }
+}
 .dialog { display: grid; grid-template-columns: 150px 1fr; gap: 18px; min-height: 190px; cursor: pointer; background: var(--ink); }
 .dialog.is-narr { grid-template-columns: 1fr; }
 .dialog.is-narr .dialog-portrait { display: none; }

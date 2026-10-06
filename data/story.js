@@ -6,11 +6,11 @@ GC.DATA = GC.DATA || {};
 
 GC.DATA.story = {
   intro: [
-    { who: 'narr', text: 'Hace tres semanas. Un ring. Un foco. Un hombre.' },
+    { who: 'narr', text: 'Hace tres semanas. Un ring. Un foco. Un hombre.', scene: 'ring', cast: ['giovanni'] },
     { who: 'narr', text: 'Giovanni, líder de la mayor organización criminal de la región, subió al cuadrilátero convencido de su victoria.' },
-    { who: 'narr', text: 'Enfrente: una Chansey.' },
-    { who: 'narr', text: 'El combate duró menos que un anuncio.' },
-    { who: 'giovanni', text: '¡He construido imperios enteros! ¡He doblegado a gobiernos! ¡He capturado Pokémon que los libros llaman leyenda!' },
+    { who: 'narr', text: 'Enfrente: una Chansey.', cast: ['giovanni', 'arbitro', 'chansey'] },
+    { who: 'narr', text: 'El combate duró menos que un anuncio.', fx: { giovanni: 'ko' } },
+    { who: 'giovanni', scene: 'office', cast: ['giovanni'], fx: { giovanni: '' }, text: '¡He construido imperios enteros! ¡He doblegado a gobiernos! ¡He capturado Pokémon que los libros llaman leyenda!' },
     { who: 'giovanni', text: '¡Y una bola rosa y sonriente me mandó a dormir sobre la lona!' },
     { who: 'giovanni', text: 'Inaceptable.' },
     { who: 'agente', text: 'Señor, quizá deberíamos centrarnos en… ¿el crimen?' },
@@ -19,7 +19,7 @@ GC.DATA.story = {
   ],
 
   day1: [
-    { who: 'narr', text: 'DÍA 1.' },
+    { who: 'narr', text: 'DÍA 1.', scene: 'gym', cast: ['giovanni', 'agente'] },
     { who: 'agente', text: 'Señor, el gimnasio privado está listo. Sacos, pesas, cinta, sala de meditación… y un chef.' },
     { who: 'giovanni', text: '¿Cuánto ha costado?' },
     { who: 'agente', text: '¿Importa, señor?' },
@@ -30,7 +30,7 @@ GC.DATA.story = {
   ],
 
   finalIntro: [
-    { who: 'narr', text: 'El pabellón está lleno. Nadie sabe cómo se ha corrido la voz.' },
+    { who: 'narr', text: 'El pabellón está lleno. Nadie sabe cómo se ha corrido la voz.', scene: 'ring', cast: ['giovanni', 'arbitro', 'chansey'] },
     { who: 'narr', text: 'Giovanni se venda las manos en silencio.' },
     { who: 'giovanni', text: '{fights} combates. {day} días. {punches} puñetazos.' },
     { who: 'giovanni', text: 'Todo para este momento.' },
@@ -40,13 +40,13 @@ GC.DATA.story = {
   ],
 
   ending: [
-    { who: 'narr', text: 'Silencio.' },
+    { who: 'narr', text: 'Silencio.', scene: 'ring', cast: ['giovanni', 'arbitro', 'chansey'], fx: { giovanni: 'ko' } },
     { who: 'narr', text: 'Giovanni yace sobre la lona. Otra vez.' },
     { who: 'narr', text: 'Pero esta vez es distinto.' },
     { who: 'giovanni', text: '…' },
     { who: 'giovanni', text: 'El primer día no aguanté ni {first} segundos.' },
     { who: 'giovanni', text: 'Hoy la he hecho tambalearse.' },
-    { who: 'giovanni', text: 'No necesitaba derrotar a Chansey.' },
+    { who: 'giovanni', text: 'No necesitaba derrotar a Chansey.', fx: { giovanni: '' } },
     { who: 'giovanni', text: 'Necesitaba derrotar al Giovanni que cayó la primera vez.' },
     { who: 'giovanni', text: 'Y a ese… lo he dejado K.O.' },
     { who: 'chansey', text: '¡Chansey!' },

@@ -1,5 +1,13 @@
 /* Pantalla: EVENTOS / HISTORIA
-   params: { lines, title, choices, event, then, cls, vars } */
+   params: { lines, title, choices, event, then, cls, vars, scene, cast }
+
+   ESCENARIO: encima del cuadro de diálogo se dibuja un decorado con los
+   personajes de la escena. El que habla se ilumina.
+     scene: 'ring' | 'gym' | 'office' | 'shop' | 'lab' | 'night'
+     cast:  ['giovanni', 'chansey', ...]   (si falta, se deduce de quién habla)
+   Cada línea puede cambiarlos sobre la marcha:
+     { who, text, scene: 'ring', cast: [...], fx: { giovanni: 'ko' } }
+   fx disponibles: 'ko' (tumbado), 'wobble' (tambaleándose), 'hide' (fuera), '' (normal) */
 window.GC = window.GC || {};
 GC.Screens = GC.Screens || {};
 
@@ -31,7 +39,36 @@ GC.Screens.event = {
     this.i = -1;
     this.chosen = null;
     this.done = false;
+    const ev = p.event || {};
+    this.scene = p.scene || ev.scene || 'gym';
+    this.cast = (p.cast || ev.cast || this.castFrom(p)).slice();
+    this.fx = {};
     this.advance();
+  },
+
+  /** Reparto por defecto: quien habla en la escena (Giovanni siempre a la izquierda). */
+  castFrom(p) {
+    const all = (p.lines || []).concat(...(p.choices || []).map(c => c.lines || []));
+    const ids = [];
+    all.forEach(l => {
+      const sp = GC.DATA.speakers[l.who];
+      if (sp && sp.sprite && !ids.includes(sp.sprite)) ids.push(sp.sprite);
+    });
+    if (!ids.includes('giovanni')) ids.unshift('giovanni');
+    return ['giovanni'].concat(ids.filter(id => id !== 'giovanni')).slice(0, 4);
+  },
+
+  renderStage(speakerSprite) {
+    const stage = document.getElementById('ev-stage');
+    const bg = GC.SCENES && GC.SCENES[this.scene];
+    stage.className = 'event-stage scene-' + this.scene + (bg ? ' has-bg' : '');
+    stage.style.backgroundImage = bg ? `url('${bg}')` : '';
+    stage.innerHTML = '<div class="stage-deco"></div><div class="stage-cast">' + this.cast
+      .filter(id => this.fx[id] !== 'hide')
+      .map(id => {
+        const state = !speakerSprite ? '' : id === speakerSprite ? 'talking' : 'quiet';
+        return `<div class="actor actor-${id} ${state} ${this.fx[id] ? 'fx-' + this.fx[id] : ''}">${GC.Sprites.html(id)}</div>`;
+      }).join('') + '</div>';
   },
 
   advance() {
@@ -44,6 +81,11 @@ GC.Screens.event = {
 
   showLine(l) {
     const sp = GC.DATA.speakers[l.who] || GC.DATA.speakers.narr;
+    if (l.scene) this.scene = l.scene;
+    if (l.cast) this.cast = l.cast.slice();
+    if (l.fx) Object.assign(this.fx, l.fx);
+    if (sp.sprite && !this.cast.includes(sp.sprite)) this.cast.push(sp.sprite);
+    this.renderStage(sp.sprite);
     const dialog = document.getElementById('ev-dialog');
     dialog.classList.toggle('is-narr', !sp.sprite);
     document.getElementById('ev-name').textContent = sp.name;

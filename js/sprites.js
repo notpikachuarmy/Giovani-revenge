@@ -21,6 +21,18 @@ dependiente: { label: 'DEPENDIENTE',    tone: 'neutral', src: 'assets/characters
 persian:     { label: 'PERSIAN',        tone: 'neutral', src: 'assets/characters/persian.png',     poses: {} },
 };
 
+/* Fondos de las escenas de diálogo (opcionales).
+   Sin imagen se dibuja un decorado con CSS. Ejemplo:
+     ring: 'assets/backgrounds/escena_ring.png'   (tamaño orientativo 1200x340) */
+GC.SCENES = {
+  ring:   null,   // pabellón / ring
+  gym:    null,   // gimnasio privado
+  office: null,   // despacho de Giovanni
+  shop:   null,   // tienda de material
+  lab:    null,   // laboratorio
+  night:  null,   // pesadilla
+};
+
 GC.Sprites = {
   /** Devuelve el HTML del sprite (imagen real o placeholder). */
   html(id, opts = {}) {
