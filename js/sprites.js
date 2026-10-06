@@ -19,6 +19,7 @@ coach:       { label: 'MAESTRO DOBLÓN', tone: 'neutral', src: 'assets/character
 cientifico:  { label: 'DR. PROBETA',    tone: 'neutral', src: 'assets/characters/cientifico.png',  poses: {} },
 dependiente: { label: 'DEPENDIENTE',    tone: 'neutral', src: 'assets/characters/dependiente.png', poses: {} },
 persian:     { label: 'PERSIAN',        tone: 'neutral', src: 'assets/characters/persian.png',     poses: {} },
+};
 
 GC.Sprites = {
   /** Devuelve el HTML del sprite (imagen real o placeholder). */
