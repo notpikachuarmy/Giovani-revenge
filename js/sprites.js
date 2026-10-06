@@ -11,15 +11,14 @@
 window.GC = window.GC || {};
 
 GC.SPRITES = {
-  giovanni:    { label: 'GIOVANNI',       tone: 'gio',     src: null, poses: {} },
-  chansey:     { label: 'CHANSEY',        tone: 'chan',    src: null, poses: {} },
-  arbitro:     { label: 'ÁRBITRO',        tone: 'neutral', src: null, poses: {} },
-  agente:      { label: 'AGENTE ROCKET',  tone: 'rocket',  src: null, poses: {} },
-  coach:       { label: 'MAESTRO DOBLÓN', tone: 'neutral', src: null, poses: {} },
-  cientifico:  { label: 'DR. PROBETA',    tone: 'neutral', src: null, poses: {} },
-  dependiente: { label: 'DEPENDIENTE',    tone: 'neutral', src: null, poses: {} },
-  persian:     { label: 'PERSIAN',        tone: 'neutral', src: null, poses: {} },
-};
+giovanni:    { label: 'GIOVANNI',       tone: 'gio',     src: 'assets/characters/giovanni.png',    poses: {} },
+chansey:     { label: 'CHANSEY',        tone: 'chan',    src: 'assets/characters/chansey.png',     poses: {} },
+arbitro:     { label: 'ÁRBITRO',        tone: 'neutral', src: 'assets/characters/arbitro.png',     poses: {} },
+agente:      { label: 'AGENTE ROCKET',  tone: 'rocket',  src: 'assets/characters/agente.png',      poses: {} },
+coach:       { label: 'MAESTRO DOBLÓN', tone: 'neutral', src: 'assets/characters/coach.png',       poses: {} },
+cientifico:  { label: 'DR. PROBETA',    tone: 'neutral', src: 'assets/characters/cientifico.png',  poses: {} },
+dependiente: { label: 'DEPENDIENTE',    tone: 'neutral', src: 'assets/characters/dependiente.png', poses: {} },
+persian:     { label: 'PERSIAN',        tone: 'neutral', src: 'assets/characters/persian.png',     poses: {} },
 
 GC.Sprites = {
   /** Devuelve el HTML del sprite (imagen real o placeholder). */
