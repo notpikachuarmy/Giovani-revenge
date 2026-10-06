@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Giovanni contra Chansey: La revancha imposible</title>
+  <meta name="description" content="Fangame paródico: entrena a Giovanni para una revancha imposible contra Chansey.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🥊</text></svg>">
+  <!-- Fuentes pixel. Si no cargan (sin conexión), hay fuentes monoespaciadas de respaldo. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/menu.css">
+  <link rel="stylesheet" href="css/training.css">
+  <link rel="stylesheet" href="css/battle.css">
+</head>
+<body>
+  <div id="app">
+    <header id="hud" class="hidden"></header>
+    <main id="screen"></main>
+  </div>
+  <div id="modal-root"></div>
+  <div id="toast-root" aria-live="polite"></div>
+
+  <!-- Datos (separados de la lógica: edítalos para cambiar balance y contenido) -->
+  <script src="data/balance.js"></script>
+  <script src="data/skills.js"></script>
+  <script src="data/equipment.js"></script>
+  <script src="data/training.js"></script>
+  <script src="data/chansey.js"></script>
+  <script src="data/events.js"></script>
+  <script src="data/story.js"></script>
+
+  <!-- Núcleo -->
+  <script src="js/ui.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/sprites.js"></script>
+  <script src="js/state.js"></script>
+  <script src="js/save.js"></script>
+  <script src="js/player.js"></script>
+  <script src="js/skills.js"></script>
+  <script src="js/equipment.js"></script>
+  <script src="js/training.js"></script>
+  <script src="js/events.js"></script>
+  <script src="js/chansey.js"></script>
+  <script src="js/battle.js"></script>
+  <script src="js/input.js"></script>
+  <script src="js/game.js"></script>
+
+  <!-- Pantallas -->
+  <script src="js/screens/menu.js"></script>
+  <script src="js/screens/event.js"></script>
+  <script src="js/screens/hub.js"></script>
+  <script src="js/screens/training.js"></script>
+  <script src="js/screens/rest.js"></script>
+  <script src="js/screens/skills.js"></script>
+  <script src="js/screens/equipment.js"></script>
+  <script src="js/screens/stats.js"></script>
+  <script src="js/screens/battle.js"></script>
+  <script src="js/screens/result.js"></script>
+  <script src="js/screens/ending.js"></script>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

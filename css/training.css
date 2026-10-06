@@ -1,0 +1,146 @@
+/* =========================================================================
+   BASE, ENTRENAMIENTO, DESCANSO, HABILIDADES, EQUIPO Y ESTADÍSTICAS
+   ========================================================================= */
+
+/* ------------------------------------------------------------ base */
+.hub-screen { display: grid; grid-template-columns: 1fr 380px; gap: 18px; align-items: start; }
+.room { padding: 0; overflow: hidden; }
+.room-scene {
+  position: relative; height: 340px;
+  background: linear-gradient(#3a2f5e 0 70%, #24193d 70%);
+  border-bottom: 3px solid var(--ink);
+}
+.room-window {
+  position: absolute; left: 6%; top: 28px; width: 150px; height: 110px;
+  background: #0f1640; border: 6px solid #5a4a86; box-shadow: inset 0 0 0 3px var(--ink);
+  background-image: radial-gradient(circle at 20% 30%, #fff 1px, transparent 2px), radial-gradient(circle at 70% 60%, #fff 1px, transparent 2px);
+}
+.moon { position: absolute; right: 18px; top: 14px; width: 22px; height: 22px; background: #2a3366; }
+.moon.on { background: var(--cream); box-shadow: 0 0 12px var(--cream); }
+.room-poster {
+  position: absolute; left: 28%; top: 24px; width: 130px;
+  background: var(--cream); color: var(--ink); border: 3px solid var(--ink); padding: 6px; text-align: center;
+  transform: rotate(-3deg); box-shadow: var(--shadow);
+}
+.poster-head { font-family: var(--pixel); font-size: 9px; color: var(--rocket); margin-bottom: 4px; }
+.poster-pic { height: 70px; }
+.poster-marks { color: var(--rocket); font-size: 18px; line-height: 0.9; word-break: break-all; min-height: 18px; margin-top: 4px; }
+.room-bag {
+  position: absolute; right: 8%; top: 0; width: 56px; height: 190px;
+  background: linear-gradient(90deg, #8c2a2a, #b33d3d 50%, #8c2a2a);
+  border: 3px solid var(--ink); border-radius: 0 0 14px 14px;
+}
+.room-bag::before { content: ''; position: absolute; left: 24px; top: -40px; width: 4px; height: 40px; background: var(--ink); }
+.room-giovanni { position: absolute; left: 62%; bottom: 22px; width: 110px; height: 170px; transform: translateX(-50%); }
+.room-floor { position: absolute; left: 0; right: 0; bottom: 0; height: 20px; background: repeating-linear-gradient(90deg, #2c2148 0 40px, #251b3e 40px 80px); }
+.room .quote { margin: 14px 16px 6px; }
+.hub-hint { margin: 6px 16px 14px; color: var(--fat); }
+.hub-side { display: grid; gap: 16px; }
+.hub-menu { display: grid; gap: 10px; }
+.hub-menu .btn { width: 100%; }
+.btn-fight { background: var(--rocket); }
+.btn-fight:hover:not([disabled]) { background: #ee3a52; }
+.btn-final { background: var(--gold); color: var(--ink); animation: glow 1.4s ease-in-out infinite; }
+.btn-final:hover:not([disabled]) { background: #ffe07f; }
+@keyframes glow { 50% { box-shadow: 4px 4px 0 var(--ink), 0 0 18px var(--gold); } }
+.hub-goal .bar { grid-template-columns: 96px 1fr 60px; margin-bottom: 4px; }
+.goal-big { font-family: var(--pixel); font-size: 12px; color: var(--gold); }
+.goal-small { margin-top: 8px; }
+
+/* ------------------------------------------------------------ entrenamiento / descanso */
+.mini-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 12px; }
+.mini-stat { display: flex; justify-content: space-between; border-bottom: 2px dashed var(--line); }
+.train-log { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; font-size: 19px; }
+.train-log li { border-left: 4px solid var(--gold); padding-left: 8px; }
+.train-log li.muted { border-color: var(--line); }
+.totals, .buff-list, .derived { list-style: none; padding: 0; margin: 0; display: grid; gap: 4px; }
+.totals b { font-family: var(--pixel); font-size: 11px; }
+.sleep-card { border-color: var(--en); }
+
+/* ------------------------------------------------------------ habilidades */
+.sp-pill { font-family: var(--pixel); font-size: 11px; background: var(--gold); color: var(--ink); padding: 6px 10px; border: 3px solid var(--ink); }
+.skills-screen .screen-body { grid-template-columns: 1fr 330px; }
+.skill-tree { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.branch { display: grid; gap: 10px; align-content: start; }
+.branch h2 { font-size: 11px; margin: 0 0 2px; }
+.skill-node {
+  display: grid; gap: 6px; text-align: left; font-family: var(--body); font-size: 18px; color: var(--cream);
+  background: var(--panel); border: 3px solid var(--ink); box-shadow: var(--shadow); padding: 8px 10px; cursor: pointer;
+  position: relative;
+}
+.skill-node:hover { background: var(--panel-2); }
+.sn-name { font-family: var(--pixel); font-size: 9px; line-height: 1.5; }
+.sn-meta { display: flex; justify-content: space-between; gap: 6px; }
+.sn-pips { color: var(--gold); letter-spacing: 2px; }
+.sn-tech { position: absolute; top: -9px; right: 6px; font-family: var(--pixel); font-size: 7px; background: var(--rocket); padding: 2px 4px; }
+.skill-node.st-locked { opacity: 0.5; }
+.skill-node.st-available { border-color: var(--good); }
+.skill-node.st-max { border-color: var(--gold); }
+.skill-node.selected { background: var(--line); outline: 3px solid var(--cream); outline-offset: 1px; }
+.skill-detail h2 { font-size: 13px; color: var(--cream); }
+.sd-branch { color: var(--muted); margin: 0 0 6px; }
+.sd-level { color: var(--gold); }
+.sd-desc { color: var(--muted); }
+.sd-effect { border-left: 4px solid var(--good); padding-left: 8px; }
+.req-list { list-style: none; padding: 0; margin: 0 0 12px; }
+.req-list .ok { color: var(--good); }
+.req-list .no { color: var(--bad); }
+.skill-detail .btn { width: 100%; }
+
+/* ------------------------------------------------------------ equipo */
+.slot-tabs { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; margin-bottom: 16px; }
+.slot-tab {
+  display: grid; gap: 4px; text-align: left; color: var(--cream); font-family: var(--body); font-size: 17px;
+  background: var(--panel); border: 3px solid var(--ink); box-shadow: var(--shadow); padding: 8px; cursor: pointer;
+}
+.slot-tab.on { background: var(--line); border-color: var(--gold); }
+.slot-icon { font-size: 22px; }
+.slot-name { font-family: var(--pixel); font-size: 9px; color: var(--gold); }
+.slot-item { color: var(--muted); font-size: 16px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.stat-table { width: 100%; border-collapse: collapse; margin-bottom: 10px; }
+.stat-table td, .stat-table th { padding: 4px 6px; border-bottom: 2px dashed var(--line); text-align: right; font-weight: normal; }
+.stat-table td:first-child, .stat-table th:first-child { text-align: left; }
+.stat-table th { color: var(--muted); }
+
+/* ------------------------------------------------------------ estadísticas */
+.tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: -3px; }
+.tab {
+  font-family: var(--pixel); font-size: 10px; color: var(--muted); background: var(--canvas);
+  border: 3px solid var(--ink); border-bottom: none; padding: 10px 12px; cursor: pointer;
+}
+.tab.on { background: var(--panel); color: var(--gold); }
+.stats-body { min-height: 300px; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.record-table, .history-table { width: 100%; border-collapse: collapse; }
+.record-table td, .history-table td, .history-table th { padding: 5px 8px; border-bottom: 2px dashed var(--line); text-align: left; font-weight: normal; }
+.record-table td:last-child { text-align: right; color: var(--gold); }
+.history-table th { color: var(--muted); }
+.history-table tr.final td { color: var(--gold); }
+.table-scroll { overflow-x: auto; }
+.title-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
+.title-card {
+  display: grid; gap: 6px; text-align: left; font-family: var(--body); font-size: 18px; color: var(--cream);
+  background: var(--panel-2); border: 3px solid var(--ink); padding: 10px; cursor: pointer;
+}
+.title-card.on { border-color: var(--gold); }
+.title-card.locked { opacity: 0.45; cursor: default; }
+.tc-name { font-family: var(--pixel); font-size: 10px; color: var(--rose); line-height: 1.5; }
+.tc-desc { color: var(--muted); }
+.intel-list { margin: 0; padding-left: 26px; display: grid; gap: 10px; }
+.intel { padding-left: 6px; }
+.intel.locked { color: var(--muted); }
+
+@media (max-width: 1000px) {
+  .hub-screen, .skills-screen .screen-body { grid-template-columns: 1fr; }
+  .skill-tree { grid-template-columns: repeat(2, 1fr); }
+  .slot-tabs { grid-template-columns: repeat(4, 1fr); }
+  .two-col { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .skill-tree { grid-template-columns: 1fr; }
+  .slot-tabs { grid-template-columns: repeat(2, 1fr); }
+  .room-scene { height: 280px; }
+  .room-poster { left: 34%; width: 96px; }
+  .room-giovanni { left: 72%; width: 90px; height: 150px; }
+  .room-window { width: 90px; }
+}
